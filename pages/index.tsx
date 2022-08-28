@@ -1,3 +1,4 @@
+import { link } from "fs";
 import type { NextPage } from "next";
 
 const Home: NextPage = () => {
@@ -5,26 +6,36 @@ const Home: NextPage = () => {
     <div className="bg-slate-400 py-20 px-20 grid gap-5 min-h-screen">
       <div className="bg-white p-6 rounded-3xl shadow-xl">
         <span className="font-semibold text-3xl">Select Item</span>
-        <div className="flex justify-between">
-          <span className="text-gray-500 my-2">Grety Chair</span>
-          <span className="font-semibold">$19</span>
-        </div>
-        <div className="flex justify-between">
-          <span className="text-gray-500">Grety Chair</span>
-          <span className="font-semibold">$19</span>
-        </div>
+        <ul>
+          {[1, 2, 3, 4, 5].map((i) => (
+            <div
+              className="flex justify-between items-center odd:bg-blue-50 even:bg-yellow-50"
+              key={i}
+            >
+              <span className="text-gray-500 my-2">Grety Chair</span>
+              <span className="font-semibold">$19</span>
+            </div>
+          ))}
+        </ul>
+        <ul>
+          {["a", "b", "c", "d", ""].map((c, i) => (
+            <li key={i} className="bg-red-500 py-2 empty:hidden">
+              {c}
+            </li>
+          ))}
+        </ul>
         <div className="flex justify-between mt-2 pt-2 border-t-2 border-dashed">
           <span>Total</span>
           <span className="font-semibold">$10</span>
         </div>
-        <button
+        <div
           className="mt-5 bg-blue-500 text-white p-3 text-center rounded-xl w-2/4 mx-auto cursor-pointer
         hover:bg-teal-500 hover:text-black
         active:bg-yellow-500 focus:bg-red-500
         "
         >
           Checkout
-        </button>
+        </div>
       </div>
       <div className="bg-white rounded-2xl shadow-xl overflow-hidden">
         <div className="bg-blue-500 p-6 pb-14">
