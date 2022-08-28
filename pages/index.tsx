@@ -88,6 +88,9 @@ const Home: NextPage = () => {
           </div>
         </div>
       </div>
+      <div>
+        <h1 className="-tracking-[1px]">JIT Compiler</h1>
+      </div>
     </div>
   );
 };
