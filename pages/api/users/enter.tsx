@@ -1,8 +1,21 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import withHandler from "@libs/server/withHandler";
+import client from "@libs/server/client";
 
 async function handler(req: NextApiRequest, res: NextApiResponse) {
-  return res.status(200).json({ result: true });
+  const { phone, email } = req.body;
+  const payload = phone ? { phone: +phone } : { email };
+  const user = await client.user.upsert({
+    where: {
+      ...payload,
+    },
+    create: {
+      name: "Anonymous",
+      ...payload,
+    },
+    update: {},
+  });
+  return res.status(200).json({ result: true, data: user });
 }
 
 export default withHandler("POST", handler);
