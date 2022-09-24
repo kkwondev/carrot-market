@@ -36,21 +36,20 @@ async function handler(
   });
 
   if (phone) {
-    await twilioClient.messages.create({
-      messagingServiceSid: process.env.TWILIO_MSID,
-      to: process.env.PHONE_NUMBER!,
-      body: `로그인 접속 비밀번호 입니다. ${payload}`,
-    });
+    // await twilioClient.messages.create({
+    //   messagingServiceSid: process.env.TWILIO_MSID,
+    //   to: process.env.PHONE_NUMBER!,
+    //   body: `로그인 접속 비밀번호 입니다. ${payload}`,
+    // });
   } else if (email) {
-    const email = await mail.send({
-      from: "kkwondev@gmail.com",
-      to: "kkwondev@gmail.com",
-      subject: "인증 메일입니다.",
-      text: `로그인 접속 비밀번호 입니다. ${payload}`,
-      html: `<strong>로그인 접속 비밀번호 입니다. ${payload}</strong>`,
-    });
-
-    console.log(email);
+    // const email = await mail.send({
+    //   from: "kkwondev@gmail.com",
+    //   to: "kkwondev@gmail.com",
+    //   subject: "인증 메일입니다.",
+    //   text: `로그인 접속 비밀번호 입니다. ${payload}`,
+    //   html: `<strong>로그인 접속 비밀번호 입니다. ${payload}</strong>`,
+    // });
+    // console.log(email);
   }
   return res.status(200).json({ result: true });
 }
